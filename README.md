@@ -35,3 +35,7 @@ These insights empower stakeholders with key business metrics, enabling strategi
 ## 🛡️License
 This project is licensed under the MIT License. You are free to use, modify, and share this project with proper attribution.
 
+### About Me '
+Hi , I am Arpit Khandelwal a Mechanical Engineeering student at NSUT,Delhi
+
+
