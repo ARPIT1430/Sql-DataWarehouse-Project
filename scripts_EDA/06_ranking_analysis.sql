@@ -97,7 +97,7 @@ SELECT
     c.customer_key , 
     c.first_name,
     c.last_name ,
-    COUNT(f.order_number) AS Total_orders_per_customer ,
+    COUNT(DISTINCT f.order_number) AS Total_orders_per_customer ,
     ROW_NUMBER () OVER (ORDER BY COUNT(f.order_number)  )  AS Customer_ranking_orders
 FROM gold.fact_sales f 
 LEFT JOIN gold.dim_customers c 
