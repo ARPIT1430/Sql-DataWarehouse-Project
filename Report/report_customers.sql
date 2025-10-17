@@ -21,7 +21,15 @@ Highlights:
 ===============================================================================
 */
 
+-- =============================================================================
+-- Create Report: gold.report_customers
+-- =============================================================================
 
+IF OBJECT_ID('gold.report_customers', 'V') IS NOT NULL
+    DROP VIEW gold.report_customers;
+GO
+
+CREATE VIEW gold.report_customers AS 
 
 WITH base_query AS (
 /*---------------------------------------------------------------------------
@@ -42,8 +50,7 @@ WITH base_query AS (
 	LEFT JOIN gold.dim_customers c
 	ON f.customer_key = c.customer_key 
 	WHERE f.order_date IS NOT NULL 
-) ,
-	customer_segregations AS (
+) , customer_segregations AS (
 	SELECT 
 	customer_name , 
 	customer_number ,
@@ -61,13 +68,11 @@ WITH base_query AS (
 		customer_number ,
 		customer_key , 
 		age 
-	
 /*
 Grouping by 4 columns means:
 SQL treats the combination (customer_name, customer_number, customer_key, age) as one unique identifier.
 If any of those 4 values differ, they form a new group.
 */
-	
 )
 SELECT 
 	customer_name , 
@@ -106,4 +111,4 @@ FROM customer_segregations
 
 
 
-
+SELECT * FROM gold.report_customers
